@@ -3,10 +3,7 @@ package database.thing;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by User on 04/07/2016.
@@ -30,7 +27,6 @@ public class UserDAO {
     private DbHelper2 dbHelper;
     private Context context;
     private SQLiteDatabase db;
-    private long z;
 
     public UserDAO (Context context){
         this.context = context;
@@ -39,8 +35,6 @@ public class UserDAO {
     public UserDAO openWritable(){
         dbHelper = new DbHelper2(context);
         db = dbHelper.getWritableDatabase();
-        //dbHelper.onCreate(db);
-        //dbHelper.onUpgrade(db, 1, 2);
         return this;
     }
 
