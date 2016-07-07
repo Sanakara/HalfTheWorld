@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HalfTheWorld</string>
+    <string name="username">your username</string>
+    <string name="email">total_randomness@email.com</string>
+    <string name="password">Your password</string>
+    <string name="register">REGISTER</string>
+    <string name="userData">User Data</string>
+    <string name="show">SHOW</string>
+</resources>
