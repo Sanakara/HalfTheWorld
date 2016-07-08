@@ -60,7 +60,7 @@ public class UserDAO {
     }
 
     public Cursor getUserCursorByUsername(String username){
-        Cursor c = db.query(TABLE_NAME, null, COLUMN_USERNAME + "=" + username, null, null, null, null);
+        Cursor c = db.query(TABLE_NAME, null, COLUMN_USERNAME + " = '" + username+ "'", null, null, null, null);
         if(c.getCount() > 0){
             c.moveToFirst();
             return c;
@@ -71,7 +71,7 @@ public class UserDAO {
 
 
     public Cursor getUserCursorById(int userId){
-        Cursor c = db.query(TABLE_NAME, null, COLUMN_USER_ID + "=" + userId, null, null, null, null);
+        Cursor c = db.query(TABLE_NAME, null, COLUMN_USER_ID + " = '" + userId + "'", null, null, null, null);
         if(c.getCount() > 0){
             c.moveToFirst();
             return c;

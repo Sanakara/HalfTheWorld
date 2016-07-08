@@ -21,6 +21,7 @@
             android:id="@+id/userName"
             android:hint="@string/username"
             android:textAlignment="center"
+            android:paddingTop="80dp"
             android:layout_gravity="center_horizontal"/>
 
         <EditText
@@ -28,6 +29,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/passW"
             android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingTop="60dp"
+            android:textAlignment="center"
             android:layout_gravity="center_horizontal"/>
 
         <Button
@@ -35,11 +39,32 @@
             android:layout_height="wrap_content"
             android:id="@+id/butt0"
             android:text="@string/login"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:onClick="onLogMeIn"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newbie"
+                android:textStyle="italic"
+                android:textSize="16sp"
+                android:paddingTop="75dp"
+                android:textAlignment="center"/>
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:onClick="onStartRegistration"/>
+        </LinearLayout>
 
    </LinearLayout>
 </ScrollView>

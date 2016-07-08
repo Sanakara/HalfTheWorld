@@ -3,7 +3,7 @@
     <string name="username">Your username</string>
     <string name="email">example@email.com</string>
     <string name="password">Your password</string>
-    <string name="register">REGISTER</string>
+    <string name="register">Register</string>
     <string name="userData">User Data</string>
     <string name="show">SHOW</string>
     <string name="Confirm">Confirm your password</string>
@@ -11,4 +11,6 @@
     <string name="login">Login</string>
     <string name="errorUsername">This username does not exists</string>
     <string name="errorPassword">Wrong password</string>
+    <string name="newbie">New in this awesome app?\n register here</string>
+    <string name="errorConnection">It appears connection failed\n Please try again later</string>
 </resources>

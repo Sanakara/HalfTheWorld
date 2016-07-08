@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
 
-    EditText email, username, password, userIdTester;
+    EditText email, username, password, confirm, userIdTester;
     TextView userData;
     SQLiteDatabase db;
     User u;
@@ -28,32 +28,39 @@ public class Main2Activity extends AppCompatActivity {
         password = (EditText)findViewById(R.id.passW);
         userData = (TextView)findViewById(R.id.userData);
         userIdTester = (EditText)findViewById(R.id.userIdTest);
+        confirm = (EditText)findViewById(R.id.confirm);
 
         DbHelper2 dbHelper2 = new DbHelper2(this);
     }
 
     public void onRegister (View v){
-        u = new User();
-        u.setEmail(email.getText().toString());
-        u.setUserName(username.getText().toString());
-        u.setPassword(password.getText().toString());
 
-        UserDAO userDAO = new UserDAO(this);
-        userDAO.openWritable();
-        try{
-            userDAO.insert(u);
-        }catch(SQLiteConstraintException e){
+        if((password.getText()).toString().equals(confirm.getText().toString())){
 
-            Toast.makeText(getApplicationContext(), "Cet username ou cet email est déjà usité", Toast.LENGTH_SHORT).show();
+            u = new User();
+            u.setEmail(email.getText().toString());
+            u.setUserName(username.getText().toString());
+            u.setPassword(password.getText().toString());
+
+            UserDAO userDAO = new UserDAO(this);
+            userDAO.openWritable();
+            try{
+                userDAO.insert(u);
+            }catch(SQLiteConstraintException e){
+                Toast.makeText(getApplicationContext(), "Cet username ou cet email est déjà usité", Toast.LENGTH_SHORT).show();
+            }
+
+            email.setText("");
+            username.setText("");
+            password.setText("");
+            confirm.setText("");
+
+            Log.d("INSERT_USER", "true");
+            userDAO.close();
+        }else{
+            confirm.setError(getString(R.string.errorPassword));
         }
 
-
-        email.setText("");
-        username.setText("");
-        password.setText("");
-
-        Log.d("INSERT_USER", "true");
-        userDAO.close();
     }
 
     public void showMeUserData(View vi){
