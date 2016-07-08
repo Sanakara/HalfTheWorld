@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">HalfTheWorld</string>
-    <string name="username">your username</string>
-    <string name="email">total_randomness@email.com</string>
+    <string name="username">Your username</string>
+    <string name="email">example@email.com</string>
     <string name="password">Your password</string>
     <string name="register">REGISTER</string>
     <string name="userData">User Data</string>
     <string name="show">SHOW</string>
+    <string name="Confirm">Confirm your password</string>
+    <string name="title">Titre Momentané Mais qui Claque Sa Race</string>
+    <string name="login">Login</string>
+    <string name="errorUsername">This username does not exists</string>
+    <string name="errorPassword">Wrong password</string>
 </resources>

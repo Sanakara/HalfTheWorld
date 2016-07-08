@@ -59,6 +59,17 @@ public class UserDAO {
 
     }
 
+    public Cursor getUserCursorByUsername(String username){
+        Cursor c = db.query(TABLE_NAME, null, COLUMN_USERNAME + "=" + username, null, null, null, null);
+        if(c.getCount() > 0){
+            c.moveToFirst();
+            return c;
+        }else {
+            return null;
+        }
+    }
+
+
     public Cursor getUserCursorById(int userId){
         Cursor c = db.query(TABLE_NAME, null, COLUMN_USER_ID + "=" + userId, null, null, null, null);
         if(c.getCount() > 0){
@@ -75,6 +86,16 @@ public class UserDAO {
         u.setEmail(c.getString(c.getColumnIndex(COLUMN_EMAIL)));
         u.setPassword(c.getString(c.getColumnIndex(COLUMN_PASSWORD)));
         return u;
+    }
+
+    public User getUserByUsername(String username){
+        Cursor c = getUserCursorByUsername(username);
+        if(c != null){
+            User u = cursorToUser(c);
+            return u;
+        }else {
+            return null;
+        }
     }
 
     public User getUserById(int userId){
