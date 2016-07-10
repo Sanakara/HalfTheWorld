@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         userName = (EditText)findViewById(R.id.userName);
         passWord = (EditText)findViewById(R.id.passW);
 
@@ -41,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             if(passWord.getText().toString().equals(lambda.getPassword())){
                 Intent alice = new Intent(this, Main3Activity.class);
                 startActivity(alice);
+
             }else {
                 passWord.setError(getString(R.string.errorPassword));
                 passWord.setText("");

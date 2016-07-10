@@ -1,5 +1,6 @@
 package database.thing;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
@@ -54,9 +55,11 @@ public class Main2Activity extends AppCompatActivity {
             username.setText("");
             password.setText("");
             confirm.setText("");
-
-            Log.d("INSERT_USER", "true");
             userDAO.close();
+
+            Intent back = new Intent(this, MainActivity.class);
+            startActivity(back);
+
         }else{
             confirm.setError(getString(R.string.errorPassword));
         }
