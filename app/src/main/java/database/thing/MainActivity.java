@@ -38,16 +38,16 @@ public class MainActivity extends AppCompatActivity {
             userName.setText("");
         }else{
             if(passWord.getText().toString().equals(lambda.getPassword())){
-                Intent alice = new Intent(this, Main3Activity.class);
+                Intent alice = new Intent(this, GooglePlacesActivity.class);
                 startActivity(alice);
 
             }else {
                 passWord.setError(getString(R.string.errorPassword));
                 passWord.setText("");
             }
+
         }
-
-
+        userDAO.close();
     }
 
     public void onStartRegistration (View vius){

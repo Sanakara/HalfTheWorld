@@ -1,37 +1,36 @@
 package database.thing;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 
-import android.content.Context;
-import android.location.Location;
-import android.location.LocationManager;
+import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.MapView;
 
-public class Main3Activity extends FragmentActivity implements OnConnectionFailedListener {
+public class GooglePlacesActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     GoogleApiClient googleApiClient;
+    MapView places;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_google_places);
 
+        places = (MapView)findViewById(R.id.places);
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Places.GEO_DATA_API)
                 .addApi(Places.PLACE_DETECTION_API)
                 .enableAutoManage(this, this)
                 .build();
     }
+
 
     @Override
     protected void onStart() {
@@ -51,8 +50,5 @@ public class Main3Activity extends FragmentActivity implements OnConnectionFaile
                 getString(R.string.errorConnection),
                 Toast.LENGTH_SHORT).show();
     }
-
-    
-
 
 }

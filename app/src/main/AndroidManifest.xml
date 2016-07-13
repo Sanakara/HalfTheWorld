@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="database.thing">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permissions.ACCESS_MOCK_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +25,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDsAxbzhqigP7QsFmM7xDlZJERDFtDmOyY" />
 
-        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".GooglePlacesActivity"></activity>
     </application>
 
 </manifest>
