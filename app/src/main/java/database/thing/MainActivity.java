@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             if(passWord.getText().toString().equals(lambda.getPassword())){
                 Intent alice = new Intent(this, GooglePlacesActivity.class);
                 startActivity(alice);
+                passWord.setText("");
 
             }else {
                 passWord.setError(getString(R.string.errorPassword));
