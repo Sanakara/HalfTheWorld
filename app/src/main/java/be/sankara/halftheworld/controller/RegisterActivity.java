@@ -1,16 +1,19 @@
-package database.thing;
+package be.sankara.halftheworld.controller;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import be.sankara.halftheworld.database.DbHelper2;
+import be.sankara.halftheworld.database.UserDAO;
+import be.sankara.halftheworld.model.User;
+import database.thing.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -22,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_register);
 
         email = (EditText)findViewById(R.id.email);
         username = (EditText)findViewById(R.id.username);
@@ -66,29 +69,4 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void showMeUserData(View vi){
-        UserDAO userDAO = new UserDAO(this);
-        userDAO.openReadable();
-        User lambda = userDAO.getUserById(Integer.parseInt(userIdTester.getText().toString()));
-        if(lambda != null){
-            userData.setText(lambda.getUserName() + " email = "+ lambda.getEmail() + "\n"
-                    + lambda.getUserName() + " password = " + lambda.getPassword());
-        }else {
-            Cursor mCursor = userDAO.getDatabase().rawQuery("SELECT * FROM User", null);
-            StringBuilder builder = new StringBuilder();
-            mCursor.moveToFirst();
-            do{
-                User bi = userDAO.cursorToUser(mCursor);
-                builder.append(bi.getUserName() +"\nuserId = "+ bi.getUserId() +"\nemail = "+ bi.getEmail() + "\npasssword = " + bi.getPassword()+"\n\n");
-            }while(mCursor.moveToNext());
-
-            userData.setText(builder);
-
-
-
-
-
-        }
-
-    }
 }

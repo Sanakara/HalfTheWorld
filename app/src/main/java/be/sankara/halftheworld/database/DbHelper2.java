@@ -1,9 +1,11 @@
-package database.thing;
+package be.sankara.halftheworld.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
+import be.sankara.halftheworld.database.UserDAO;
 
 /**
  * Created by User on 04/07/2016.

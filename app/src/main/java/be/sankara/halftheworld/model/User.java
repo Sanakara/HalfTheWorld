@@ -1,4 +1,4 @@
-package database.thing;
+package be.sankara.halftheworld.model;
 
 import android.database.Cursor;
 

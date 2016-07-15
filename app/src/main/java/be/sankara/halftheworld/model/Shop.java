@@ -1,4 +1,4 @@
-package database.thing;
+package be.sankara.halftheworld.model;
 
 /**
  * Created by Student on 7/07/2016.

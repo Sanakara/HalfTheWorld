@@ -1,9 +1,11 @@
-package database.thing;
+package be.sankara.halftheworld.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import be.sankara.halftheworld.model.Shop;
 
 /**
  * Created by Student on 7/07/2016.

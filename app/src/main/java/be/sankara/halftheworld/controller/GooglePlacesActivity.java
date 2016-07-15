@@ -1,4 +1,4 @@
-package database.thing;
+package be.sankara.halftheworld.controller;
 
 import android.Manifest;
 import android.content.Context;
@@ -22,6 +22,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import database.thing.R;
 
 public class GooglePlacesActivity extends FragmentActivity implements OnMapReadyCallback {
 
