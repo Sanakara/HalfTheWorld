@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Main2Activity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText email, username, password, confirm, userIdTester;
     TextView userData;

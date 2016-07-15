@@ -25,7 +25,7 @@ package="database.thing">
 
     </activity>
 
-    <activity android:name=".Main2Activity" />
+    <activity android:name=".RegisterActivity" />
     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version" />

@@ -50,13 +50,11 @@ public class GooglePlacesActivity extends FragmentActivity implements OnMapReady
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
 
-        location = new Location(provider);
-
-        onMyPosition(location);
+        onMyPosition();
 
     }
 
-    public void onMyPosition(Location location) {
+    public void onMyPosition() {
 
         location = onUpdateMyPosition(LocationManager.GPS_PROVIDER);
 
@@ -64,7 +62,7 @@ public class GooglePlacesActivity extends FragmentActivity implements OnMapReady
 
         if (myPosition != null) {
             mMap.addMarker(new MarkerOptions().position(myPosition).title("Marker"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myPosition));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition, 16.0F));
         } else {
             LatLng sydney = new LatLng(-34, 151);
             mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -83,6 +81,7 @@ public class GooglePlacesActivity extends FragmentActivity implements OnMapReady
         }
 
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, new LocationListener() {
+
             @Override
             public void onLocationChanged(Location location) {
 
