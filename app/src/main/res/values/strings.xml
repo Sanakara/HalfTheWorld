@@ -17,4 +17,6 @@
     <string name="title_activity_google_places">Map</string>
     <string name="google_maps_key">AIzaSyAhtc0kRj-Iz3VF-6cagHR3CTppKLNdlZc</string>
     <string name="thanx">Thank you</string>
+    <string name="position">Could not pinpoint your position</string>
+    <string name="reconsider">This app cannot function without access to your location, please choose wisely</string>
 </resources>

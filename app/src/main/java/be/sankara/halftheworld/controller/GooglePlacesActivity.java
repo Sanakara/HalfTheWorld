@@ -2,6 +2,7 @@ package be.sankara.halftheworld.controller;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -31,7 +32,7 @@ public class GooglePlacesActivity extends FragmentActivity implements OnMapReady
     private LocationManager locationManager;
     private Location location;
     private static final float MIN_DISTANCE_CHANGE_FOR_UPDATES = 1;
-    private static final long MIN_TIME_BW_UPDATES = 5000;
+    private static final long MIN_TIME_BW_UPDATES = 1000;
     private static final int REQUEST_PERMISSION_ACCESS_LOCATION = 0;
 
     @Override
@@ -51,79 +52,34 @@ public class GooglePlacesActivity extends FragmentActivity implements OnMapReady
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
-
-        onMyPosition();
-
-    }
-
-    public void onMyPosition() {
-
-        location = onUpdateMyPosition(LocationManager.GPS_PROVIDER);
-
-        LatLng myPosition = new LatLng(location.getLatitude(), location.getLongitude());
-
-        if (myPosition != null) {
-            mMap.addMarker(new MarkerOptions().position(myPosition).title("Marker"));
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition, 16.0F));
-        } else {
-            LatLng sydney = new LatLng(-34, 151);
-            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        }
-
-
-    }
-
-    public Location onUpdateMyPosition(String provider) {
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_ACCESS_LOCATION);
+
+            return;
         }
+        location = locationManager.getLastKnownLocation(provider);
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MIN_TIME_BW_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, new LocationListener() {
-
-            @Override
-            public void onLocationChanged(Location location) {
-
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-
-            }
-        });
-
-        location = new Location(LocationManager.GPS_PROVIDER);
-
-        return location;
-
+        LatLng myPosition = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(myPosition).title("Marker"));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myPosition, 16.0f));
     }
 
-    public void onRequestPermissionResult(int requestCode, String permissions[], int[] grantResults){
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
         switch(requestCode){
-            case REQUEST_PERMISSION_ACCESS_LOCATION :
-                if(grantResults.length > 0){
-                    if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this, getString(R.string.thanx), Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    onStop();
-                }
+            case REQUEST_PERMISSION_ACCESS_LOCATION:
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Toast.makeText(this, getString(R.string.thanx), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getString(R.string.reconsider), Toast.LENGTH_LONG).show();
+                Intent back = new Intent(this, MainActivity.class);
+                startActivity(back);
+            }
         }
-
     }
 
 }
+

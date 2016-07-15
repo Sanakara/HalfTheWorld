@@ -30,8 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.email);
         username = (EditText)findViewById(R.id.username);
         password = (EditText)findViewById(R.id.passW);
-        userData = (TextView)findViewById(R.id.userData);
-        userIdTester = (EditText)findViewById(R.id.userIdTest);
         confirm = (EditText)findViewById(R.id.confirm);
 
         DbHelper2 dbHelper2 = new DbHelper2(this);
